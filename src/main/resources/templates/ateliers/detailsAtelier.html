@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Détails de l'Atelier</title>
+    <!-- Lien vers votre fichier CSS -->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}" />
+</head>
+<body>
+    <h2>Détails de l'Atelier</h2>
+    <p>Nom: <span th:text="${atelier.nom}"></span></p>
+    <p>Description: <span th:text="${atelier.description}"></span></p>
+    <form th:action="@{/ateliers/{id}/reserver(id=${atelier.id})}" method="post">
+        <label for="participantId">ID du Participant:</label>
+        <input type="text" id="participantId" name="participantId" required>
+        <button type="submit">Réserver</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Liste des Réservations</title>
+    <!-- Lien vers votre fichier CSS -->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}" />
+</head>
+<body>
+    <h2>Liste des Réservations</h2>
+    <ul>
+        <li th:each="reservation : ${reservations}">
+            <span th:text="${reservation.creneau}"></span> - <span th:text="${reservation.statut}"></span>
+        </li>
+    </ul>
+</body>
+</html>

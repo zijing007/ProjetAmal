@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Détails de l'Artisan</title>
+</head>
+<body>
+    <h2>Détails de l'Artisan</h2>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Nom</th>
+            <!-- Add other columns as needed -->
+        </tr>
+        <tr>
+            <td th:text="${artisan.id}"></td>
+            <td th:text="${artisan.nom}"></td>
+            <!-- Add other columns as needed -->
+        </tr>
+    </table>
+</body>
+</html>

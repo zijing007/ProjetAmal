@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Reservation Atelier</title>
+</head>
+<body>
+
+<h1>Reservation Atelier Main Page</h1>
+
+<!-- Buttons to navigate to different pages -->
+<a th:href="@{/ateliers}"><button>Show Ateliers</button></a>
+<a th:href="@{/artisans}"><button>Show Artisans</button></a>
+<a th:href="@{/participants}"><button>Show Participants</button></a>
+<a th:href="@{/reservations}"><button>Show Reservations</button></a>
+
+<hr>
+
+<!-- Display the list of reservations -->
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Atelier</th>
+            <th>Artisan</th>
+            <th>Participant</th>
+            <th>Date and Time</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Iterate over reservations and display details -->
+        <tr th:each="reservation : ${reservations}">
+            <td th:text="${reservation.id}"></td>
+            <td th:text="${reservation.atelier.nom}"></td>
+            <td th:text="${reservation.artisan.nom}"></td>
+            <td th:text="${reservation.participant.nom}"></td>
+            <td th:text="${#dates.format(reservation.creneau, 'yyyy-MM-dd HH:mm')}"></td>
+            <td>
+                <!-- Add the delete button with a form for each reservation -->
+                <form th:action="@{/deleteReservation/{reservationId}(reservationId=${reservation.id})}" method="post">
+                    <input type="submit" value="Delete">
+                </form>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<!-- Form to create a new reservation -->
+<form action="/updateReservation" method="post">
+    <label for="ateliers">Select Atelier:</label>
+    <select id="ateliers" name="ateliers">
+        <!-- Add options dynamically with Thymeleaf if available -->
+        <!-- For example, if you have a list of ateliers from backend -->
+        <!-- <option th:each="atelier : ${ateliers}" th:value="${atelier.id}" th:text="${atelier.nom}"></option> -->
+        <option value="1">Atelier 1</option>
+        <option value="2">Atelier 2</option>
+    </select>
+    <br><br>
+    <label for="artisans">Select Artisan:</label>
+    <select id="artisans" name="artisans">
+        <!-- Add options dynamically with Thymeleaf if available -->
+        <!-- For example, if you have a list of artisans from backend -->
+        <!-- <option th:each="artisan : ${artisans}" th:value="${artisan.id}" th:text="${artisan.nom}"></option> -->
+        <option value="1">Artisan 1</option>
+        <option value="2">Artisan 2</option>
+    </select>
+    <br><br>
+    <label for="participants">Select Participant:</label>
+    <select id="participants" name="participants">
+        <!-- Add options dynamically with Thymeleaf if available -->
+        <!-- For example, if you have a list of participants from backend -->
+        <!-- <option th:each="participant : ${participants}" th:value="${participant.id}" th:text="${participant.nom}"></option> -->
+        <option value="1">Participant 1</option>
+        <option value="2">Participant 2</option>
+    </select>
+    <br><br>
+    <label for="creneau">Select Date and Time:</label>
+    <input type="datetime-local" id="creneau" name="creneau">
+    <br><br>
+    
+    <input type="submit" value="updateReservation">
+</form>
+
+</body>
+</html>

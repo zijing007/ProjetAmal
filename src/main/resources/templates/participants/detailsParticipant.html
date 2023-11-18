@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Détails du Participant</title>
+    <!-- Lien vers votre fichier CSS -->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}" />
+</head>
+<body>
+    <h2>Détails du Participant</h2>
+    <p>Nom: <span th:text="${participant.nom}"></span></p>
+    <p>Email: <span th:text="${participant.email}"></span></p>
+</body>
+</html>

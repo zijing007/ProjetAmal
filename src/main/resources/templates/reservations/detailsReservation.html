@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Détails de la Réservation</title>
+    <!-- Lien vers votre fichier CSS -->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}" />
+</head>
+<body>
+    <h2>Détails de la Réservation</h2>
+    <p>Créneau: <span th:text="${reservation.creneau}"></span></p>
+    <p>Statut: <span th:text="${reservation.statut}"></span></p>
+    <form th:action="@{/reservations/{id}/annuler(id=${reservation.id})}" method="post">
+        <button type="submit">Annuler Réservation</button>
+    </form>
+</body>
+</html>
